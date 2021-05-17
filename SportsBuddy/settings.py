@@ -27,12 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+CRISPY_TEMPLATE_PACK="bootstrap4"
 # Application definition
 
 INSTALLED_APPS = [
     'registration.apps.RegistrationConfig' ,
     'SportsBuddyApp.apps.SportsbuddyappConfig',
+    "crispy_forms",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

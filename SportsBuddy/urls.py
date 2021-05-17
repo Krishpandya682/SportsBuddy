@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path
 
 from django.urls import include
+from registration import views as v
+
+appName="SportsBuddy"
 
 urlpatterns = [
     path('home/', include('SportsBuddyApp.urls')),
     path('admin/', admin.site.urls),
-    path('createUser/', include('registration.urls'))
+    path('createUser/', include('registration.urls')),
+    path("register/", v.register, name="register"),
 ]
