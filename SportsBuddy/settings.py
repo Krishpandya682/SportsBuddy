@@ -26,7 +26,8 @@ SECRET_KEY = 'vl%^4asr4-&(!3dpm1w%a663+08p#&fv5m3fz84hvw*5gm(h+l'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+LOGIN_REDIRECT_URL = "/home"
+LOGOUT_REDIRECT_URL = "/home"
 CRISPY_TEMPLATE_PACK="bootstrap4"
 # Application definition
 

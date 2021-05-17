@@ -1,10 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\registration",
     "\\SportsBuddy",
     "\\SportsBuddyApp",
-    "\\SportsBuddyApp\\templates"
+    "\\SportsBuddyApp\\templates",
+    "\\SportsBuddyApp\\templates\\registration",
+    "\\SportsBuddyApp\\templates\\SportsBuddyApp"
   ],
-  "SelectedNode": "\\SportsBuddy\\urls.py",
+  "SelectedNode": "\\SportsBuddyApp\\templates\\registration\\login.html",
   "PreviewInSolutionExplorer": false
 }

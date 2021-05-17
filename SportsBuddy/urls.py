@@ -25,5 +25,5 @@ urlpatterns = [
     path('home/', include('SportsBuddyApp.urls')),
     path('admin/', admin.site.urls),
     path('createUser/', include('registration.urls')),
-    path("register/", v.register, name="register"),
+   # path("register/", v.register, name="register"),
 ]
