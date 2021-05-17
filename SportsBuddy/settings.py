@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration.apps.RegistrationConfig' ,
     'SportsBuddyApp.apps.SportsbuddyappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
