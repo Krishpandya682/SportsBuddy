@@ -8,6 +8,6 @@
     "\\SportsBuddyApp\\templates\\registration",
     "\\SportsBuddyApp\\templates\\SportsBuddyApp"
   ],
-  "SelectedNode": "\\SportsBuddyApp\\templates\\registration\\login.html",
+  "SelectedNode": "\\SportsBuddyApp\\models.py",
   "PreviewInSolutionExplorer": false
 }

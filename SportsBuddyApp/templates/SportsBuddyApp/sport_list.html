@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h1>Sports</h1>
+<ul>
+    {% for sport in object_list %}
+    <li>{{ sport.name }} - {{ sport.open_events }}</li>
+    {% empty %}
+    <li>No Sports</li>
+    {% endfor %}
+</ul>
+{% endblock %}

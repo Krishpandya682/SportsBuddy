@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h1>Events</h1>
+<ul>
+    {% for event in object_list %}
+    <li>{{ event.user.username }} created a {{event.sport.name}} starting at {{event.start_time}} to {{event.end_time}}</li>
+    {% empty %}
+    <li>No Events</li>
+    {% endfor %}
+</ul>
+{% endblock %}
