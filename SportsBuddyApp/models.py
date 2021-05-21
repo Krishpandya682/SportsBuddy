@@ -13,6 +13,9 @@ class Sport(models.Model):
     name = models.CharField(max_length=50)
     open_events = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 class Event(models.Model):
     user = models.ForeignKey(User, on_delete=CASCADE)
     sport = models.ForeignKey(Sport, on_delete=CASCADE)
@@ -22,5 +25,9 @@ class Event(models.Model):
     proficiency = models.IntegerField(default= Proficiency.LOW, choices=Proficiency.choices)
     competive = models.BooleanField(default = False)
     rating = models.IntegerField()
+
+    def __str__(self):
+        return self.user.username
+
 
         

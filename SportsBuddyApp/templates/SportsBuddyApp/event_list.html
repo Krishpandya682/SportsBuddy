@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 {% block content%}
+<h1>HEADER NUMBER IS {{sport_id}}</h1>
 <h1>Events</h1>
 <ul>
     {% for event in object_list %}
-    <li>{{ event.user.username }} created a {{event.sport.name}} starting at {{event.start_time}} to {{event.end_time}}</li>
+    {% if event.id == sport_id %}
+    <a href="/home/eventsdetail/{{event.id}}" ><li>{{event.id}} {{ event.user.username }} created a {{event.sport.name}} starting at {{event.start_time}} to {{event.end_time}}</li></a>
     {% empty %}
     <li>No Events</li>
     {% endfor %}
