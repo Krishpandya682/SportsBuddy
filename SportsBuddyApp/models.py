@@ -23,8 +23,8 @@ class Event(models.Model):
     end_time = models.DateTimeField()
     radius =models.IntegerField()
     proficiency = models.IntegerField(default= Proficiency.LOW, choices=Proficiency.choices)
-    competive = models.BooleanField(default = False)
-    rating = models.IntegerField()
+    competitive = models.BooleanField(default = False)
+    #rating = models.IntegerField()
 
     def __str__(self):
         return self.user.username
