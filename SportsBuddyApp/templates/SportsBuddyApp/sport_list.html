@@ -4,7 +4,7 @@
 <h1>Sports</h1>
 <ul>
     {% for sport in object_list %}
-    <li>{{ sport.name }} - {{ sport.open_events }}</li>
+    <a href="/home/eventslist/{{sport.id}}"><li>{{ sport.name }} - {{ sport.open_events }}</li></a>
     {% empty %}
     <li>No Sports</li>
     {% endfor %}
