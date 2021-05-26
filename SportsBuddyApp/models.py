@@ -4,10 +4,13 @@ from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
 
 # Create your models here.
+
+
 class Proficiency(models.IntegerChoices):
     LOW = '0'
-    MEDIUM= '1'
+    MEDIUM = '1'
     HIGH = '2'
+
 
 class Sport(models.Model):
     name = models.CharField(max_length=50)
@@ -16,18 +19,21 @@ class Sport(models.Model):
     def __str__(self):
         return self.name
 
+    def increment_event(self):
+        print("increment function")
+        self.open_events += 1
+
+
 class Event(models.Model):
     user = models.ForeignKey(User, on_delete=CASCADE)
     sport = models.ForeignKey(Sport, on_delete=CASCADE)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
-    radius =models.IntegerField()
-    proficiency = models.IntegerField(default= Proficiency.LOW, choices=Proficiency.choices)
-    competitive = models.BooleanField(default = False)
+    radius = models.IntegerField()
+    proficiency = models.IntegerField(
+        default=Proficiency.LOW, choices=Proficiency.choices)
+    competitive = models.BooleanField(default=False)
     #rating = models.IntegerField()
 
     def __str__(self):
         return self.user.username
-
-
-        

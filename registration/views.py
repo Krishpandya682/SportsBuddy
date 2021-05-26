@@ -14,12 +14,12 @@ from .forms import RegisterForm
 # Create your views here.
 def register(response):
     if response.method == "POST":
-	     form = RegisterForm(response.POST)
-	     if form.is_valid():
-	          form.save()
+        form = RegisterForm(response.POST)
+        if form.is_valid():
+            form.save()
 
-	     return redirect("/createUser/login")
+        return redirect("/home")
     else:
-	     form = RegisterForm()
+        form = RegisterForm()
 
-    return render(response, "registration/register.html", {"form":form})
+    return render(response, "registration/register.html", {"form": form})
