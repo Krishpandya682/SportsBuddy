@@ -28,11 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = "/home"
 LOGOUT_REDIRECT_URL = "/home"
-CRISPY_TEMPLATE_PACK="bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 # Application definition
 
 INSTALLED_APPS = [
-    'registration.apps.RegistrationConfig' ,
+    'registration.apps.RegistrationConfig',
     'SportsBuddyApp.apps.SportsbuddyappConfig',
     "crispy_forms",
     'django.contrib.admin',
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +117,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal301'
 
 
 # Static files (CSS, JavaScript, Images)

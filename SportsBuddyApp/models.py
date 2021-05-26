@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
+from django.contrib.gis.db import models
+
 
 # Create your models here.
 
@@ -25,6 +27,7 @@ class Sport(models.Model):
 
 
 class Event(models.Model):
+    location = models.PointField()
     user = models.ForeignKey(User, on_delete=CASCADE)
     sport = models.ForeignKey(Sport, on_delete=CASCADE)
     start_time = models.DateTimeField()
