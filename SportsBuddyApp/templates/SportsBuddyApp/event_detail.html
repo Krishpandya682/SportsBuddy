@@ -5,11 +5,17 @@
     <h1>
         Details of {{event.sport}} sport event created by {{event.user.username}}
     </h1>
-
+<h1>
+    People interested:
+    {% for user in event.interested_users.all %}
+    {{user.username}}
+    {% endfor %}
+</h1>
     <p>
         Start : {{event.start_time}}<br/>
         End : {{event.end_time}}<br/>
         Rating : {{event.rating}}<br/>
     </p>
+    <a href="/home/eventsdetail/{{event.id}}/join">Join</a>
 </html>
 {% endblock %}

@@ -50,15 +50,21 @@ def create_event_view(request):
     if form.is_valid():
         print("database change")
         sport = form.cleaned_data['sport']
-        sport.increment_event()
         sport.save()
         temp_form = form.save(commit=False)
-        temp_form.user = request.user
+        temp_form.creator = request.user
         print("User change")
         temp_form.save()
+        sport.increment_event()
         return redirect("/home")
         # save the form data to model
         # form.save()
 
     context['form'] = form
     return render(request, "SportsBuddyApp/create_event.html", context)
+
+
+@login_required
+def join_event_view(request, event_id):
+    Event.add_interested_user(Event, request.user)
+    return render(request, 'SportsBuddyApp/join_event.html', {})

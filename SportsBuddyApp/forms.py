@@ -6,5 +6,5 @@ class EventForm(forms.ModelForm):
 
     class Meta:
         model = Event
-        fields = ['location', 'sport', 'start_time',
-                  'end_time', 'radius', 'proficiency', 'competitive']
+        fields = ['sport', 'start_time',
+                  'end_time', 'radius', 'proficiency', 'num_of_players', 'competitive']

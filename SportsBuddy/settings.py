@@ -24,11 +24,12 @@ SECRET_KEY = 'vl%^4asr4-&(!3dpm1w%a663+08p#&fv5m3fz84hvw*5gm(h+l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = "/home"
 LOGOUT_REDIRECT_URL = "/home"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -117,9 +117,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal301'
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

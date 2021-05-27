@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-from .views import SportListView, EventListView, EventDetailView,create_event_view
+from .views import SportListView, EventListView, EventDetailView, create_event_view, join_event_view
 #from SportsBuddy.SportsBuddyApp.views import create_event_view
 
 urlpatterns = [
@@ -9,5 +9,8 @@ urlpatterns = [
     path('sportslist', SportListView.as_view(), name='sport-list'),
     path('eventslist/<int:sport_id>', EventListView.as_view(), name='event-list'),
     path('eventsdetail/<int:pk>', EventDetailView.as_view(), name='event-detail'),
-    path('createevent',create_event_view,name='create_event')
+    path('eventsdetail/<int:event_id>/join',
+         join_event_view, name='join-event'),
+
+    path('createevent', create_event_view, name='create_event')
 ]
