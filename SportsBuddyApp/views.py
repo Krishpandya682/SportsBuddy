@@ -66,5 +66,6 @@ def create_event_view(request):
 
 @login_required
 def join_event_view(request, event_id):
-    Event.add_interested_user(Event, request.user)
+    event = Event.objects.filter(pk=event_id)[0]
+    event.interested_users.add(request.user)
     return render(request, 'SportsBuddyApp/join_event.html', {})

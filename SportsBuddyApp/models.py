@@ -43,8 +43,3 @@ class Event(models.Model):
 
     def __str__(self):
         return self.creator.username
-
-    def add_interested_user(self, interested_user):
-        event = self
-        print("-------------------------------------interested user is being added------------------------------")
-        print(event.interested_users.all())
