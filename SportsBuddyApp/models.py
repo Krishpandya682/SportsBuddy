@@ -25,6 +25,7 @@ class Sport(models.Model):
 
 
 class Event(models.Model):
+    event_name=models.CharField(max_length=50,default="Event Name")
     creator = models.ForeignKey(
         User, on_delete=CASCADE, related_name='creator', default=None)
     sport = models.ForeignKey(Sport, on_delete=CASCADE)
