@@ -19,7 +19,9 @@
           <div class="card-action">
             
             <a href="/home/eventsdetail/{{event.id}}">Details View</a>
+            {%if not event.creator == user %}
             <a href="/home/eventsdetail/{{event.id}}/join">Join</a>
+            {%endif%}
           </div>
         </div>
       </div>

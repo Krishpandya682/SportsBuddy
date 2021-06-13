@@ -9,9 +9,12 @@
 # views.py
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
-
+from login_required import login_not_required
 
 # Create your views here.
+
+
+@login_not_required
 def register(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)

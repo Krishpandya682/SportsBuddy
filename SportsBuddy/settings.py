@@ -25,8 +25,10 @@ SECRET_KEY = 'vl%^4asr4-&(!3dpm1w%a663+08p#&fv5m3fz84hvw*5gm(h+l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = []
+
+LOGIN_URL = '/createUser/login/'
 LOGIN_REDIRECT_URL = "/home"
-LOGOUT_REDIRECT_URL = "/home"
+LOGOUT_REDIRECT_URL = "/createUser/login"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 
@@ -50,8 +52,19 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'login_required.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+LOGIN_REQUIRED_IGNORE_PATHS = [
+    r'home/$',
+]
+
+LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
+    'index',
+    'login',
+    'register',
 ]
 
 ROOT_URLCONF = 'SportsBuddy.urls'
