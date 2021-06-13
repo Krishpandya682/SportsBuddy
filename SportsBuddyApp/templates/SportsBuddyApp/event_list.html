@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} SportsBuddy{% endblock %}
+
+{%block content%}
+<h1>{{sport_id}}</h1>
+<h1>Events</h1>
+<ul>
+    <div class ="row">
+    {% for event in object_list %}
+    {%if event.sport.id == sport_id%}
+    <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">{{event.event_name}}</span>
+           
+            <p>{{ event.creator.username }} created a {{event.sport.name}} starting at {{event.start_time}} to {{event.end_time}}</p>
+          </div>
+          <div class="card-action">
+            
+            <a href="/home/eventsdetail/{{event.id}}">Details View</a>
+            {%if not event.creator == user %}
+            <a href="/home/eventsdetail/{{event.id}}/join">Join</a>
+            {%endif%}
+          </div>
+        </div>
+      </div>
+    
+    {% endif %}
+    {% empty %}
+    <li>No Events</li> 
+    
+ 
+    {% endfor %}
+</div>
+    
+</ul>
+{%endblock   %}

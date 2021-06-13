@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Create an Event{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST" class="form-group">
+	{% csrf_token %}
+	{{ form|crispy }}
+    <script>
+        $(function () {
+          $("#id_start_date").datetimepicker({
+            format: 'd/m/Y H:i',
+          });
+        });
+      </script>
+	<button type="submit" class="btn btn-success">Create Event</button>
+    </form>
+{% endblock %}

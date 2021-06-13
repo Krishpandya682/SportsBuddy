@@ -1,0 +1,19 @@
+<html>
+    <head>
+ 
+        <title>
+            {% block title %}
+                SportsBuddy
+            {% endblock %}
+           
+        </title>
+    </head>
+    <body>
+        <a href="/home">Go to Home</a>
+        <p>Base Starts</p>
+        {% block content %}
+
+        {% endblock %}
+       <p>Base End</p>
+    </body>
+</html>
