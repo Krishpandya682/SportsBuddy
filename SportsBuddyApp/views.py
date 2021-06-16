@@ -1,3 +1,5 @@
+from registration.models import UserProfile
+from django import forms
 from django.shortcuts import get_object_or_404, render, redirect
 from SportsBuddyApp.models import Sport, Event
 from django.http import HttpResponse
@@ -24,13 +26,21 @@ def create_event_view(request):
     # check if form data is valid
     if form.is_valid():
         print("database change")
+
         sport = form.cleaned_data['sport']
         temp_form = form.save(commit=False)
         temp_form.creator = request.user
         print("User change")
+
         temp_form.save()
+
+        user_profile = UserProfile.objects.get(user=request.user)
+        print(user_profile)
+        user_profile.created_events.add(form.instance)
+        user_profile.save()
         sport.increment_event()
         sport.save()
+
         return redirect("/home")
         # save the form data to model
         # form.save()

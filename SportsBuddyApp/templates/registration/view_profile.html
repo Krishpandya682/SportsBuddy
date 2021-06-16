@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content%}
+<html>
+    <h1>
+        Profile {{userprofile}}
+    </h1>
+<h1>
+    People interested:
+    {% for user in event.interested_users.all %}
+    {{user.username}}
+    {% endfor %}
+</h1>
+    <p>
+        Start : {{event.start_time}}<br/>
+        End : {{event.end_time}}<br/>
+        Rating : {{event.rating}}<br/>
+    </p>
+ 
+</html>
+{% endblock %}
