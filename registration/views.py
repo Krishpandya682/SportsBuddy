@@ -50,9 +50,8 @@ def create_user_profile_view(request):
     return render(request, "registration/create_profile.html", context)
 
 
-class ProfileView(DetailView):
-    model = UserProfile
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+def profile_view(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    print()
+    return render(request, "registration/view_profile.html", {"userprofile": UserProfile.objects.get(user=request.user)})

@@ -52,6 +52,10 @@ def create_event_view(request):
 def join_event_view(request, event_id):
     event = Event.objects.filter(pk=event_id)[0]
     event.interested_users.add(request.user)
+    user_profile = UserProfile.objects.get(user=request.user)
+    print(user_profile)
+    user_profile.joined_events.add(event)
+    user_profile.save()
     return render(request, 'SportsBuddyApp/join_event.html', {})
 
 

@@ -2,19 +2,31 @@
 
 {% block content%}
 <html>
+    {{userprofile}}
     <h1>
-        Profile {{userprofile}}
+        Profile {{userprofile.user}}
     </h1>
-<h1>
-    People interested:
-    {% for user in event.interested_users.all %}
-    {{user.username}}
+<p>
+    Created Events:
+    {% for event in userprofile.created_events.all %}
+    <br/>
+    {{event.event_name}}
+        
     {% endfor %}
-</h1>
+</p>
+
+<p>
+    Joined Events:
+    {% for event in userprofile.joined_events.all %}
+    <br/>
+    {{event.event_name}}
+        
+    {% endfor %}
+</p>
+
     <p>
-        Start : {{event.start_time}}<br/>
-        End : {{event.end_time}}<br/>
-        Rating : {{event.rating}}<br/>
+        UserName : {{userprofile.user}}<br/>
+        Bio : {{userprofile.bio}}
     </p>
  
 </html>
