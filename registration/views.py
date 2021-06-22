@@ -7,14 +7,13 @@
 #      return render(request, 'registration/register.html', {})
 
 # views.py
-from login_required import login_not_required
 from django.contrib.auth.models import User
 from django.views.generic.detail import DetailView
 from django.http import response
 from registration.models import UserProfile
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, UserProfileForm
-from
+from login_required import login_not_required
 
 # Create your views here.
 
