@@ -7,13 +7,16 @@
 #      return render(request, 'registration/register.html', {})
 
 # views.py
+from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
 from django.http import response
 from registration.models import UserProfile
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, UserProfileForm
 from login_required import login_not_required
+from django import http
 
 # Create your views here.
 
@@ -32,26 +35,29 @@ def register(response):
     return render(response, "registration/register.html", {"form": form})
 
 
-def create_user_profile_view(request):
-    context = {}
+class UserprofileCreate(CreateView):
 
-    # create object of form
-    form = UserProfileForm(request.POST or None, request.FILES or None)
-    # check if form data is valid
-    if form.is_valid():
-        temp_form = form.save(commit=False)
-        temp_form.user = request.user
-        temp_form.save()
-        return redirect("/home")
-        # save the form data to model
-        # form.save()
+    # specify the model for create view
+    model = UserProfile
 
-    context['form'] = form
-    return render(request, "registration/create_profile.html", context)
+    # specify the fields to be displayed
+    fields = ['profile_pic', 'bio']
+    def form_valid(self, form):
+        user_profile = form.save(commit=False)
+        user_profile.user_id = self.request.user.id
+        user_profile.save()
+        return redirect('/createUser/viewProfile')
+
+
+class UserProfileUpdateView(UpdateView):
+    model = UserProfile
+    
+    fields = ['profile_pic', 'bio']
+
+    success_url = "/createUser/viewProfile"
 
 
 def profile_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    print()
     return render(request, "registration/view_profile.html", {"userprofile": UserProfile.objects.get(user=request.user)})

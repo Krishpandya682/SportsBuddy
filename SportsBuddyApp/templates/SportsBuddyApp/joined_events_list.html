@@ -3,32 +3,10 @@
 {% block title %} Events I have joined {% endblock %}
 
 {%block content%}
-<h1>{{user.username}}</h1>
-<h1>My Events</h1>
-<ul>
-    <div class ="row">
-    {% for event in joined_events_list %}
-    <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
-          <div class="card-content white-text">
-            <span class="card-title"><b>{{event.event_name}}</b></span>
-           
-            <p>You joined a {{event.sport.name}} starting at {{event.start_time}} to {{event.end_time}}</p>
-          </div>
-          <a href="/home/eventsdetail/{{event.id}}">Details View</a>
-          <div class="card-action">
-            
-          </div>
-          <br>
-          <br>
-        </div>
-      </div>
-    {% empty %}
-    <li>No Events</li> 
-    
- 
+    Joined Events:
+    {% for event in userprofile.joined_events.all %}
+    <br/>
+    {{event.event_name}}
+        
     {% endfor %}
-</div>
-    
-</ul>
-{%endblock   %}
+    {%endblock   %}

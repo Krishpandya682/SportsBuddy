@@ -13,9 +13,14 @@ from .forms import EventForm
 
 @login_not_required
 def index(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    return render(request, 'SportsBuddyApp/index.html', {"user_id": request.user})
+    context = {"user_id": request.user}
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    if request.user.is_authenticated:
+        context['userprofile'] = user_profile
+    print('****************')
+    print(user_profile.profile_pic)
+    return render(request, 'SportsBuddyApp/index.html', context)
 
 
 def create_event_view(request):
@@ -30,12 +35,10 @@ def create_event_view(request):
         sport = form.cleaned_data['sport']
         temp_form = form.save(commit=False)
         temp_form.creator = request.user
-        print("User change")
 
         temp_form.save()
 
         user_profile = UserProfile.objects.get(user=request.user)
-        print(user_profile)
         user_profile.created_events.add(form.instance)
         user_profile.save()
         sport.increment_event()
@@ -60,17 +63,13 @@ def join_event_view(request, event_id):
 
 
 def joined_events_list(request):
-    joinedEventsList = []
-    for event in Event.objects.all():
-        if not event.creator is request.user:
-            if request.user in event.interested_users.all():
-                joinedEventsList.append(event)
-    return render(request, 'SportsBuddyApp/joined_events_list.html', {"joined_events_list": joinedEventsList})
+    user_profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'SportsBuddyApp/joined_events_list.html', {'userprofile': user_profile})
 
 
 def my_events_view(request):
-    myEventsList = Event.objects.all()
-    return render(request, 'SportsBuddyApp/my_events.html', {"my_events_list": myEventsList})
+    user_profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'SportsBuddyApp/my_events.html', {'userprofile': user_profile})
 
 
 class SportListView(ListView):

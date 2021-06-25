@@ -3,41 +3,10 @@
 {% block title %} SportsBuddy{% endblock %}
 
 {%block content%}
-<h1>{{user.username}}</h1>
-<h1>My Events</h1>
-<ul>
-    <div class ="row">
-    {% for event in my_events_list %}
-    
-     
-    {%if event.creator.id == user.id%}
-    <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
-          <div class="card-content white-text">
-            <span class="card-title"><b>{{event.event_name}}</b></span>
-           
-            <p>You created a {{event.sport.name}} starting at {{event.start_time}} to {{event.end_time}}</p>
-          </div>
-          <div class="card-action">
-            
-             People interested:
-            {% for user in event.interested_users.all %}
-       <br> <a href=""> {{user.username}} </a> 
-            {% endfor %}
-
-          </div>
-          <br>
-          <br>
-        </div>
-      </div>
-    
-    {% endif %}
-    {% empty %}
-    <li>No Events</li> 
-    
- 
+    Created Events:
+    {% for event in userprofile.created_events.all %}
+    <br/>
+    {{event.event_name}}
+        
     {% endfor %}
-</div>
-    
-</ul>
 {%endblock   %}

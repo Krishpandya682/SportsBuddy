@@ -4,6 +4,8 @@ from . import views
 from .views import SportListView, EventListView, EventDetailView, create_event_view, join_event_view, my_events_view, joined_events_list
 #from SportsBuddy.SportsBuddyApp.views import create_event_view
 
+app_name = "home"
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('sportslist', SportListView.as_view(), name='sport-list'),

@@ -2,32 +2,27 @@
 
 {% block content%}
 <html>
-    {{userprofile}}
-    <h1>
+    
+
+<a href="{{userprofile.id}}/update" >Update Profile</a>  
+      {{userprofile.profile_pic}} 
+<h1>
         Profile {{userprofile.user}}
     </h1>
-<p>
-    Created Events:
-    {% for event in userprofile.created_events.all %}
-    <br/>
-    {{event.event_name}}
-        
-    {% endfor %}
-</p>
-
-<p>
-    Joined Events:
-    {% for event in userprofile.joined_events.all %}
-    <br/>
-    {{event.event_name}}
-        
-    {% endfor %}
-</p>
-
     <p>
         UserName : {{userprofile.user}}<br/>
         Bio : {{userprofile.bio}}
     </p>
- 
+
+    <p>  
+    <a href= "{%url 'home:my_events'%}">My Events</a>
+</p>
+
+<p>
+    <a href= "{%url 'home:joined_events'%}">Joined Events</a>
+</p>
+
+
+    
 </html>
 {% endblock %}
