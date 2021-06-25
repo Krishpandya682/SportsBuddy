@@ -37,6 +37,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 INSTALLED_APPS = [
     'registration.apps.RegistrationConfig',
     'SportsBuddyApp.apps.SportsbuddyappConfig',
+    'friends.apps.FriendsConfig',
     "crispy_forms",
     'django.contrib.admin',
     'django.contrib.auth',

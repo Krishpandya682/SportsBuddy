@@ -61,3 +61,4 @@ def profile_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
     return render(request, "registration/view_profile.html", {"userprofile": UserProfile.objects.get(user=request.user)})
+

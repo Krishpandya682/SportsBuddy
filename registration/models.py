@@ -16,3 +16,5 @@ class UserProfile(models.Model):
         Event, related_name='created_events', blank=True)
     joined_events = models.ManyToManyField(
         Event, related_name='joined_events', blank=True)
+    def __str__(self):
+        return self.user.username
