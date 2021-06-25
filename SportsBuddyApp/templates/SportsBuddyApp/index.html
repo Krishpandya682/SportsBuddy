@@ -4,9 +4,20 @@
 
 {%block content%}
 <body>
-    
-   <div class="container-sm w-50 rounded p-3 my-5 bg-dark text-white">    
+     <div class="row justify-content-center my-5 text-center">
+        <div>
+ 
+        <img src="/static/favicon.ico" width="300" height="300" class="d-inline-block align-top" alt=""> 
+
+        </div>
+    </div>
+    <div class="row justify-content-center text-center">
+   <div class="container-sm w-50 rounded p-3 my-1 bg-dark text-white">    
         {%if request.user.is_authenticated%}
+        <div class="container" >
+        Search The Sport you wanna play
+        </div>
+        <div class="container my-3">
         <div class="input-group rounded">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
         aria-describedby="search-addon" />
@@ -14,10 +25,12 @@
         <i class="font-awesome fa-search"></i>
         </span>
         </div>
+        </div>
+
         {%else%}
-        <p>Login or create a new user if you wanna see the page</p>
+            Login to search the sports
         {%endif%}
     </div>
-
+    </div>
 
 </body>{%endblock   %}
