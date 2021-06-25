@@ -28,7 +28,7 @@ ALLOWED_HOSTS = []
 
 LOGIN_URL = '/createUser/login/'
 LOGIN_REDIRECT_URL = "/home"
-LOGOUT_REDIRECT_URL = "/createUser/login"
+LOGOUT_REDIRECT_URL = "/home"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 

@@ -13,13 +13,11 @@ from .forms import EventForm
 
 @login_not_required
 def index(request):
-    context = {"user_id": request.user}
-    user_profile = UserProfile.objects.get(user=request.user)
-
+    context = {}
     if request.user.is_authenticated:
+        context = {"user_id": request.user}
+        user_profile = UserProfile.objects.get(user=request.user)
         context['userprofile'] = user_profile
-    print('****************')
-    print(user_profile.profile_pic)
     return render(request, 'SportsBuddyApp/index.html', context)
 
 

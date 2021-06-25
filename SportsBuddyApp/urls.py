@@ -8,12 +8,12 @@ app_name = "home"
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('sportslist', SportListView.as_view(), name='sport-list'),
+    path('sportslist/', SportListView.as_view(), name='sport-list'),
     path('eventslist/<int:sport_id>', EventListView.as_view(), name='event-list'),
     path('eventsdetail/<int:pk>', EventDetailView.as_view(), name='event-detail'),
-    path('eventsdetail/<int:event_id>/join',
+    path('eventsdetail/<int:event_id>/join/',
          join_event_view, name='join-event'),
-    path('joinedevents', joined_events_list, name='joined_events'),
-    path('createevent', create_event_view, name='create_event'),
-    path('myevents', my_events_view, name='my_events'),
+    path('joinedevents/', joined_events_list, name='joined_events'),
+    path('createevent/', create_event_view, name='create_event'),
+    path('myevents/', my_events_view, name='my_events'),
 ]

@@ -4,15 +4,20 @@
 
 {%block content%}
 <body>
-    <p>
-        Hello Welcome to our index page
-    </p>
-    {%if request.user.is_authenticated%}
-    <a href="/createUser/logout">logout</a>
-<br>
-    <a href="/home/sportslist">Pick a Sport</a>
     
-    {%else%}
-    <a href="/createUser/login">Login</a>
-    {%endif%}
+   <div class="container-sm w-50 rounded p-3 my-5 bg-dark text-white">    
+        {%if request.user.is_authenticated%}
+        <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+        aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="search-addon">
+        <i class="font-awesome fa-search"></i>
+        </span>
+        </div>
+        {%else%}
+        <p>Login or create a new user if you wanna see the page</p>
+        {%endif%}
+    </div>
+
+
 </body>{%endblock   %}
