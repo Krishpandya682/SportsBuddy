@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-from .views import SportListView, EventListView, EventDetailView, create_event_view, join_event_view, my_events_view, joined_events_list
+from .views import SportListView, EventListView, EventDetailView, create_event_view, join_event_view, my_events_view, joined_events_list, UserListView
 #from SportsBuddy.SportsBuddyApp.views import create_event_view
 
 app_name = "home"
@@ -16,4 +16,6 @@ urlpatterns = [
     path('joinedevents/', joined_events_list, name='joined_events'),
     path('createevent/', create_event_view, name='create_event'),
     path('myevents/', my_events_view, name='my_events'),
+    path('findfriends/', UserListView.as_view(), name='user-list'),
+
 ]

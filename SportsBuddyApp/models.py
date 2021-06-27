@@ -28,9 +28,10 @@ class Sport(models.Model):
 
 class Event(models.Model):
     event_name = models.CharField(max_length=50, default="Event Name")
+    event_description = models.TextField(default="Event Description")
     creator = models.ForeignKey(
-        User, on_delete=CASCADE, related_name='creator', default=None)
-    sport = models.ForeignKey(Sport, on_delete=CASCADE)
+        User, on_delete=CASCADE, related_name='events', default=None)
+    sport = models.ForeignKey(Sport, related_name='events', on_delete=CASCADE)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     radius = models.IntegerField()
@@ -39,12 +40,10 @@ class Event(models.Model):
         default=Proficiency.LOW, choices=Proficiency.choices)
     competitive = models.BooleanField(default=False)
     interested_users = models.ManyToManyField(
-        User, related_name="interested_users", blank=True)
+        User, related_name="events_interested_in", blank=True)
     confirmed_users = models.ManyToManyField(
-        User, related_name="confirmed_users", blank=True)
+        User, related_name="events_confirmed_in", blank=True)
     #rating = models.IntegerField()
 
     def __str__(self):
-        return self.creator.username
-
-
+        return self.event_name

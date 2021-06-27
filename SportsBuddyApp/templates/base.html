@@ -14,7 +14,6 @@
     </head>
     <body>
 
-
 <!--COMMENT-->
 
 
@@ -29,11 +28,10 @@
       </div>
       <div class="container-fluid">
       <a class="navbar-nav" href="/createUser/viewProfile/">
-        {%if not userprofile.profile_pic%}
-        
+        {%if not request.user.userprofile.profile_pic%}
         <img src="/static/images/user.png" width="30" height="30" class="d-inline-block align-top" alt="">
         {%else%}
-        <img src="/static/images/{{userprofile.profile_pic}}" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="/static/images/{{request.user.userprofile.profile_pic}}" width="30" height="30" class="d-inline-block align-top" alt="">
         {%endif%}
       </a>
 
@@ -58,7 +56,6 @@
 <div class = "container pr-5 ">      
     
     {% block content %}
-
         {% endblock %}
       </div>
 

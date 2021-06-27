@@ -4,7 +4,7 @@
 
 {%block content%}
     Joined Events:
-    {% for event in userprofile.joined_events.all %}
+    {% for event in request.user.events_interested_in.all %}
     <br/>
     {{event.event_name}}
         

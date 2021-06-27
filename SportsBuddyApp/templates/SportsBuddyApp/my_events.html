@@ -2,11 +2,13 @@
 
 {% block title %} SportsBuddy{% endblock %}
 
-{%block content%}
+{% block content %}
     Created Events:
-    {% for event in userprofile.created_events.all %}
+    {% for event in request.user.events.all %}
+   
     <br/>
     {{event.event_name}}
-        
+   
     {% endfor %}
-{%endblock   %}
+    
+{% endblock %}

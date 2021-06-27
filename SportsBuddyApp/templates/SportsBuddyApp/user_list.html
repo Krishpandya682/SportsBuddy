@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 
 {% block content%}
-<h1>Sports</h1>
+<h1>Users</h1>
 
 <form>
   <input type="text" placeholder="Search.." name="search"
   {% if search %} value="{{ search }}" {% endif %}
   >
   <button type="submit"><i class="fa fa-search"></i></button>
-<a href="{% url 'home:sport-list' %}"><i class="fa fa-undo"></i></a>
+<a href="{% url 'home:user-list' %}"><i class="fa fa-undo"></i></a>
 </form>
 
 <ul>
-    {% for sport in sport_list %}
-    <a href="/home/eventslist/{{sport.id}}"><li>{{ sport.name }} - {{ sport.open_events }}</li></a>
+    {% for user in user_list %}
+    <a href="#"><li>{{user.username}} </li></a>
     {% empty %}
-    <li>No Sports</li>
+    <li>No Users</li>
     {% endfor %}
 </ul>
 {% endblock %}
