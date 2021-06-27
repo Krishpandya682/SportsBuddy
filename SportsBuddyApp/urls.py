@@ -17,5 +17,4 @@ urlpatterns = [
     path('createevent/', create_event_view, name='create_event'),
     path('myevents/', my_events_view, name='my_events'),
     path('findfriends/', UserListView.as_view(), name='user-list'),
-
 ]

@@ -42,6 +42,7 @@ class UserprofileCreate(CreateView):
 
     # specify the fields to be displayed
     fields = ['profile_pic', 'bio']
+
     def form_valid(self, form):
         user_profile = form.save(commit=False)
         user_profile.user_id = self.request.user.id
@@ -51,7 +52,7 @@ class UserprofileCreate(CreateView):
 
 class UserProfileUpdateView(UpdateView):
     model = UserProfile
-    
+
     fields = ['profile_pic', 'bio']
 
     success_url = "/createUser/viewProfile"
@@ -60,4 +61,4 @@ class UserProfileUpdateView(UpdateView):
 def profile_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    return render(request, "registration/view_profile.html", {"userprofile": UserProfile.objects.get(user=request.user)})
+    return render(request, "registration/view_profile.html", {"userprofile": request.user.userprofile})
