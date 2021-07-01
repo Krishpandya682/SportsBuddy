@@ -35,7 +35,6 @@ def create_event_view(request):
         temp_form.save()
 
         user_profile = request.user.userprofile
-        user_profile.created_events.add(form.instance)
         user_profile.save()
         sport.increment_event()
         sport.save()
@@ -53,7 +52,6 @@ def join_event_view(request, event_id):
     event.interested_users.add(request.user)
     user_profile = request.user.userprofile
     print(user_profile)
-    user_profile.joined_events.add(event)
     user_profile.save()
     return render(request, 'SportsBuddyApp/join_event.html', {})
 
