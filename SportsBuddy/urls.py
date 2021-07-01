@@ -29,5 +29,6 @@ urlpatterns = [
     path('home/', include('SportsBuddyApp.urls'), name='home'),
     path('admin/', admin.site.urls),
     path('createUser/', include('registration.urls'), name='createUser'),
+    path('friends/',include('friends.urls'),name='friends'),
     # path("register/", v.register, name="register"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

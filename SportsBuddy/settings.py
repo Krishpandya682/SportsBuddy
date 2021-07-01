@@ -37,6 +37,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # Application definition
 
 INSTALLED_APPS = [
+    'friends.apps.FriendsConfig',
     'registration.apps.RegistrationConfig',
     'SportsBuddyApp.apps.SportsbuddyappConfig',
     "crispy_forms",

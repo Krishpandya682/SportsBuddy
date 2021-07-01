@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content%}
+<html>
+    
+<div class="container-fluid">
+ <div class="row justify-content-center">
+    <div class="col mx-auto">
+        <button type="button" class="btn btn-primary">Primary</button>
+    
+     <div class="row justify-content-center">
+        <div class="col-sm-6">
+        <img src="/static/images/{{userprofile.profile_pic}}" width="300" height="300" class="d-inline-block align-top" alt=""> 
+        </div>
+
+        <div class="col-sm-6">
+        <h1>
+        Profile {{userprofile.user}}
+    </h1>
+    <p>
+        UserName : {{userprofile.user}}<br/>
+        Bio : {{userprofile.bio}}
+    </p>
+
+    <p>  
+    <a href= "{%url 'home:my_events'%}">My Events</a>
+</p>
+
+<p>
+    <a href= "{%url 'home:joined_events'%}">Joined Events</a>
+</p>
+
+        </div>
+</div>
+
+</div>
+    
+</html>
+{% endblock %}
