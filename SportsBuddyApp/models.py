@@ -25,7 +25,7 @@ class Sport(models.Model):
         self.open_events = self.open_events+1
         print(self.open_events)
 
-
+#Comment
 class Event(models.Model):
     event_name = models.CharField(max_length=50, default="Event Name")
     event_description = models.TextField(default="Event Description")
