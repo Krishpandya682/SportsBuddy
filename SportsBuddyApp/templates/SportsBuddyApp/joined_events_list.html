@@ -5,8 +5,8 @@
 {%block content%}
     Joined Events:
     {% for event in request.user.events_interested_in.all %}
-    <br/>
-    {{event.event_name}}
+    <br/>   
+    <a href="/home/eventsdetail/{{event.id}}"> {{event.event_name}}</a>
         
     {% endfor %}
     {%endblock   %}

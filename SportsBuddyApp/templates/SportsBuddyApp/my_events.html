@@ -7,7 +7,8 @@
     {% for event in request.user.events.all %}
    
     <br/>
-    {{event.event_name}}
+   <a href="/home/eventsdetail/{{event.id}}"> {{event.event_name}} </a>
+   
    
     {% endfor %}
     
