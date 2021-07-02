@@ -2,18 +2,20 @@
 
 {% block content%}
 <html>
-    
+    <!---COMMENT-->
 <div class="container-fluid">
- <div class="row justify-content-center">
-    <div class="col mx-auto">
-        <button type="button" class="btn btn-primary">Primary</button>
-    
+    <div class="row justify-content-center my-5 text-center">
+        <div>
+       <!--     <a class="btn btn-primary" href="/createUser/{{userprofile.id}}/update" role="button">Update Profile</a> -->
+       <!--REPLACE WITH SEND FRND RQST-->
+        </div>
+    </div>
      <div class="row justify-content-center">
-        <div class="col-sm-6">
+        <div class="col-sm-6 text-center">
         <img src="/static/images/{{userprofile.profile_pic}}" width="300" height="300" class="d-inline-block align-top" alt=""> 
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-6 text-center">
         <h1>
         Profile {{userprofile.user}}
     </h1>
