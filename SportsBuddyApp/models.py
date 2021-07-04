@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
-
+import datetime
 # Create your models here.
 
 
@@ -25,13 +25,14 @@ class Sport(models.Model):
         self.open_events = self.open_events+1
         print(self.open_events)
 
-#Comment
+
 class Event(models.Model):
     event_name = models.CharField(max_length=50, default="Event Name")
     event_description = models.TextField(default="Event Description")
     creator = models.ForeignKey(
         User, on_delete=CASCADE, related_name='events', default=None)
     sport = models.ForeignKey(Sport, related_name='events', on_delete=CASCADE)
+    start_date = models.DateField(default=datetime.datetime.now)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     radius = models.IntegerField()
@@ -45,5 +46,5 @@ class Event(models.Model):
         User, related_name="events_confirmed_in", blank=True)
     #rating = models.IntegerField()
 
-    def __str__(self):
+    def str(self):
         return self.event_name
