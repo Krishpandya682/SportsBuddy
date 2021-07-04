@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Friends List{% endblock %}
+
+{% block content %}
+    Friends List:
+    {% for friend in request.user.userprofile.friends_list.objects.all %}
+   
+    <br/>
+   <a href="/friends/view_profile/{{user.id}}"><li>{{user.username}} </li></a>
+   
+   
+    {% endfor %}
+    
+{% endblock %}

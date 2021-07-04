@@ -62,10 +62,11 @@ def joined_events_list(request):
 
 
 def my_events_view(request):
-   # user_profile = request.user.userprofile
-    # , {'userprofile': user_profile})
-    print(request.user.events.all())
     return render(request, 'SportsBuddyApp/my_events.html')
+
+
+def friends_list_view(request):
+    return render(request, 'SportsBuddyApp/friends_list.html')
 
 
 class SportListView(ListView):

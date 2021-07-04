@@ -11,7 +11,11 @@
     </div>
      <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
+             {%if userprofile.profile_pic%}
         <img src="/static/images/{{userprofile.profile_pic}}" width="300" height="300" class="d-inline-block align-top" alt=""> 
+            {%else%}
+        <img src="/static/images/user.png" width="300" height="300" class="d-inline-block align-top" alt=""> 
+            {%endif%}  
         </div>
 
         <div class="col-sm-6 text-center">
@@ -31,6 +35,9 @@
     <a href= "{%url 'home:joined_events'%}">Joined Events</a>
 </p>
 
+<p>
+    <a href= "{%url 'home:friends_list'%}">Friends List</a>
+</p>
         </div>
 </div>
 

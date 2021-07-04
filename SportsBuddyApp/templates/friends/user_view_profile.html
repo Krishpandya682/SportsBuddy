@@ -6,14 +6,18 @@
 <div class="container-fluid">
     <div class="row justify-content-center my-5 text-center">
         <div>
-       <!--     <a class="btn btn-primary" href="/createUser/{{userprofile.id}}/update" role="button">Update Profile</a> -->
+    <a class="btn btn-primary" href="/friends/send_friend_request/{{userprofile.user.id}}" role="button">Send Friend Request</a>
        <!--REPLACE WITH SEND FRND RQST-->
         </div>
     </div>
      <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
+            {%if userprofile.profile_pic%}
         <img src="/static/images/{{userprofile.profile_pic}}" width="300" height="300" class="d-inline-block align-top" alt=""> 
-        </div>
+            {%else%}
+        <img src="/static/images/user.png" width="300" height="300" class="d-inline-block align-top" alt=""> 
+            {%endif%}     
+    </div>
 
         <div class="col-sm-6 text-center">
         <h1>

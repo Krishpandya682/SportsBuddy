@@ -13,7 +13,10 @@
 
 <ul>
     {% for user in user_list %}
+    {%if request.user == user%}
+    {%else%}
     <a href="/friends/view_profile/{{user.id}}"><li>{{user.username}} </li></a>
+    {%endif%}
     {% empty %}
     <li>No Users</li>
     {% endfor %}
