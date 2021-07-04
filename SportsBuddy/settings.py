@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'friends.apps.FriendsConfig',
     'registration.apps.RegistrationConfig',
     'SportsBuddyApp.apps.SportsbuddyappConfig',
+    'notifications.apps.NotificationsConfig',
+    'joinRequests.apps.JoinrequestsConfig',
     "crispy_forms",
     'django.contrib.admin',
     'django.contrib.auth',

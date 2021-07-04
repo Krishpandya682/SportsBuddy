@@ -4,9 +4,14 @@
 
 {%block content%}
     Joined Events:
+
+    {% for event in request.user.events_confirmed_in.all %}
+    <br/>   
+    <a href="/home/eventsdetail/{{event.id}}"> {{event.event_name}}</a> (Confirmed)    
+    {% endfor %}
     {% for event in request.user.events_interested_in.all %}
     <br/>   
-    <a href="/home/eventsdetail/{{event.id}}"> {{event.event_name}}</a>
-        
+    <a href="/home/eventsdetail/{{event.id}}"> {{event.event_name}}</a> (Pending)    
     {% endfor %}
+
     {%endblock   %}
