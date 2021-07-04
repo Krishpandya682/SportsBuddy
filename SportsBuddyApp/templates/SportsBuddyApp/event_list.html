@@ -30,7 +30,7 @@
             
             <a href="/home/eventsdetail/{{event.id}}">Details View</a>
             {%if not event.creator == user %}
-            <a href="/home/eventsdetail/{{event.id}}/join">Join</a>
+            <a href="/joinRequests/send_join_request/{{event.id}}">Join</a>
             {%endif%}
           </div>
     

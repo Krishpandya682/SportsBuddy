@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from friends.models import FriendsRequest
-
+from joinRequests.models import JoinRequest
 from django.db.models.deletion import CASCADE
 # Create your models here.
 
@@ -22,4 +22,4 @@ class Notification(models.Model):
     frndRqst = models.ForeignKey(
         FriendsRequest, related_name='notification_frnd_rqst', on_delete=CASCADE, blank=True)
     joinRqst = models.ForeignKey(
-        FriendsRequest, related_name='notification_join_rqst', on_delete=CASCADE, blank=True)
+        JoinRequest, related_name='notification_join_rqst', on_delete=CASCADE, blank=True)

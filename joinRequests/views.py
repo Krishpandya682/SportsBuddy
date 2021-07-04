@@ -1,3 +1,4 @@
+import joinRequests
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
@@ -10,6 +11,7 @@ from django import http
 from .models import JoinRequest
 from django.http import HttpResponse
 from registration.models import UserProfile
+from notifications.models import Notification, Types
 from SportsBuddyApp.models import Event
 # Create your views here.
 
@@ -22,6 +24,10 @@ def send_join_request(request, eventID):
 
     join_request, created = JoinRequest.objects.get_or_create(
         from_user=from_user, to_user=to_user, event=event)
+
+    notifications = Notification.objects.create(
+        user=to_user, type=Types.JOIN_RQST_RECIEVED, joinRqst=join_request)
+
     if created:
         event.interested_users.add(join_request.from_user)
         return HttpResponse('join request sent')
@@ -34,9 +40,13 @@ def accept_join_request(request, requestID):
 
     join_request = JoinRequest.objects.get(id=requestID)
     event = join_request.event
+
     if join_request.to_user == request.user:
         event.confirmed_users.add(join_request.from_user)
         join_request.delete()
+        notifications = Notification.objects.create(
+            user=join_request.from_user, type=Types.JOIN_RQST_ACCEPTED, joinRqst=join_request)
+
         return HttpResponse('friend request accepted')
     else:
         return HttpResponse('not accepted')

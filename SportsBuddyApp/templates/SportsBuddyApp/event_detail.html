@@ -21,7 +21,7 @@
 
     {%if event.creator == request.user%}
     {%else%}
-    <a href="/home/eventsdetail/{{event.id}}/join">Join</a>
+    <a href="/joinRequests/send_join_request/{{event.id}}">Join</a>
     {%endif%}
 </html>
 {% endblock %}
