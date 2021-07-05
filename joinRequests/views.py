@@ -25,10 +25,10 @@ def send_join_request(request, eventID):
     join_request, created = JoinRequest.objects.get_or_create(
         from_user=from_user, to_user=to_user, event=event)
 
-    notifications = Notification.objects.create(
-        user=to_user, type=Types.JOIN_RQST_RECIEVED, joinRqst=join_request)
-
     if created:
+        notifications = Notification.objects.create(
+            user=to_user, type=Types.JOIN_RQST_RECIEVED, joinRqst=join_request)
+
         event.interested_users.add(join_request.from_user)
         return HttpResponse('join request sent')
     else:
@@ -43,10 +43,9 @@ def accept_join_request(request, requestID):
 
     if join_request.to_user == request.user:
         event.confirmed_users.add(join_request.from_user)
-        join_request.delete()
+        event.interested_users.remove(join_request.from_user)
         notifications = Notification.objects.create(
-            user=join_request.from_user, type=Types.JOIN_RQST_ACCEPTED, joinRqst=join_request)
-        notifications.save()
+            user=join_request.from_user, type=Types.JOIN_RQST_ACCEPTED, frndRqst=None, joinRqst=join_request)
         return HttpResponse('friend request accepted')
     else:
         return HttpResponse('not accepted')
