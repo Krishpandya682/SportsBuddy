@@ -81,10 +81,10 @@ class SportListView(ListView):
             # Multi-field search
             # __icontains for case-insensitive search
             query = Q(name__icontains=strval)
-            sport_list = Sport.objects.filter(
-                query).select_related().distinct().order_by('open_events')[:10]
+            sport_list = Sport.objects.order_by('-open_events').filter(
+                query).select_related().distinct()
         else:
-            sport_list = Sport.objects.all().order_by('open_events')[:10]
+            sport_list = Sport.objects.order_by('-open_events').all()
 
         ctx = {'sport_list': sport_list, 'search': strval}
         return render(request, self.template_name, ctx)

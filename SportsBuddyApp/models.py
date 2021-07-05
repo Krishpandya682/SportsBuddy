@@ -21,9 +21,7 @@ class Sport(models.Model):
 
     def increment_event(self):
         print("increment function")
-        print(self.open_events)
         self.open_events = self.open_events+1
-        print(self.open_events)
 
 
 class Event(models.Model):
@@ -46,5 +44,5 @@ class Event(models.Model):
         User, related_name="events_confirmed_in", blank=True)
     #rating = models.IntegerField()
 
-    def str(self):
+    def __str__(self):
         return self.event_name

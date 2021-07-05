@@ -15,11 +15,14 @@ class Types(models.TextChoices):
 
 
 class Notification(models.Model):
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User, related_name='notification_user', on_delete=CASCADE, blank=False)
-    type = models.IntegerField(
+    type = models.TextField(
         default=Types.NONE, choices=Types.choices)
     frndRqst = models.ForeignKey(
-        FriendsRequest, related_name='notification_frnd_rqst', on_delete=CASCADE, blank=True)
+        FriendsRequest, related_name='notification_frnd_rqst', on_delete=CASCADE, blank=True, null=True)
     joinRqst = models.ForeignKey(
-        JoinRequest, related_name='notification_join_rqst', on_delete=CASCADE, blank=True)
+        JoinRequest, related_name='notification_join_rqst', on_delete=CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return (self.user.username + "\'s " + self.type + " notification.")
