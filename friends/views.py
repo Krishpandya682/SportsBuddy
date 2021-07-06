@@ -42,7 +42,7 @@ def accept_friend_request(request, requestID):
         from_profile.friends_list.add(friend_request.to_user)
         friend_request.delete()
         notifications = Notification.objects.create(
-            user=friend_request.from_user, type=Types.FRND_RQST_ACCEPTED, frndRqst=friend_request)
+            user=from_profile.user, type=Types.FRND_RQST_ACCEPTED, frndRqst=None)
 
         return HttpResponse('friend request accepted')
     else:
@@ -52,6 +52,7 @@ def accept_friend_request(request, requestID):
 @login_required
 def view_Profile(request, user_id):
     user = User.objects.get(id=user_id)
-    print(user)
+    if not user in request.user.userprofile.friends_list.all():
+        print("true")
     user_profile = user.userprofile
     return render(request, "friends/user_view_profile.html", {'userprofile': user_profile})

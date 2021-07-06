@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
 import datetime
+from django.contrib import admin
 # Create your models here.
 
 

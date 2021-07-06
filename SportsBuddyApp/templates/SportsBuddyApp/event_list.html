@@ -30,7 +30,13 @@
             
             <a href="/home/eventsdetail/{{event.id}}">Details View</a>
             {%if not event.creator == user %}
+            {%if user in event.interested_users.all%}
+            You have already sent a join request to this event
+            {%elif user in event.interested_users.all%}
+            You have joined this event
+            {%else%}
             <a href="/joinRequest/send_join_request/{{event.id}}">Join</a>
+            {%endif%}
             {%endif%}
           </div>
     

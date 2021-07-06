@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     bio = models.TextField()
     profile_pic = models.ImageField(null=True, blank=True)
     friends_list = models.ManyToManyField(
-        User, related_name='friends_list', blank=True)
+        User, related_name='user_friends_list', blank=True)
 
     def __str__(self):
         return self.user.username

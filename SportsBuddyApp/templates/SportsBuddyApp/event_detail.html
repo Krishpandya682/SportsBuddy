@@ -3,7 +3,7 @@
 {% block content%}
 <html>
     <h1>
-        Details of {{event.sport}} sport event created by {{event.user.username}}
+        Details of {{event.sport}} sport event created by {{event.creator.username}}
     </h1>
      {%if event.creator == request.user%}
 <h1>
@@ -19,9 +19,14 @@
         Rating : {{event.rating}}<br/>
     </p>
 
-    {%if event.creator == request.user%}
-    {%else%}
+    {%if not event.creator == request.user%}
+            {%if request.user in event.interested_users.all%}
+            You have already sent a join request to this event
+            {%elif request.user in event.confirmed_users.all%}
+            You have already joined this event
+            {%else%}
     <a href="/joinRequest/send_join_request/{{event.id}}">Join</a>
+    {%endif%}
     {%endif%}
 </html>
 {% endblock %}  

@@ -66,6 +66,7 @@ def my_events_view(request):
 
 
 def friends_list_view(request):
+    print(request.user.userprofile.friends_list.all())
     return render(request, 'SportsBuddyApp/friends_list.html')
 
 
